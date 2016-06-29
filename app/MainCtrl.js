@@ -25,12 +25,13 @@ angular.module('app').controller('MainCtrl', function($scope, $rootScope, $http)
         $scope.reverse = false;
       }      
       
-      if ($scope.query.id == "") delete $scope.query.id;
-      if ($scope.query.first_name == "") delete $scope.query.first_name;
-      if ($scope.query.last_name == "") delete $scope.query.last_name;
-      if ($scope.query.email == "") delete $scope.query.email;
-      if ($scope.query.city == "") delete $scope.query.city;
-      if ($scope.query.phone == "") delete $scope.query.phone;
+      for (var key in $scope.query)
+      {
+          if ($scope.query.hasOwnProperty(key))
+          {
+            if ($scope.query[key] == "") delete $scope.query[key];
+          }
+      }
       var filters = $scope.query;
       filters = JSON.stringify(filters);
 
@@ -56,12 +57,13 @@ angular.module('app').controller('MainCtrl', function($scope, $rootScope, $http)
         
 
     vm.getData = function(pageno){ // This would fetch the data on page change.
-        if ($scope.query.id == "") delete $scope.query.id;
-        if ($scope.query.first_name == "") delete $scope.query.first_name;
-        if ($scope.query.last_name == "") delete $scope.query.last_name;
-        if ($scope.query.email == "") delete $scope.query.email;
-        if ($scope.query.city == "") delete $scope.query.city;
-        if ($scope.query.phone == "") delete $scope.query.phone;
+        for (var key in $scope.query)
+        {
+            if ($scope.query.hasOwnProperty(key))
+            {
+              if ($scope.query[key] == "") delete $scope.query[key];
+            }
+        }
         var filters = $scope.query;
         filters = JSON.stringify(filters); 
         //In practice this should be in a factory.
@@ -77,12 +79,13 @@ angular.module('app').controller('MainCtrl', function($scope, $rootScope, $http)
     
 
     $scope.showFiltered = function() {
-        if ($scope.query.id == "") delete $scope.query.id;
-        if ($scope.query.first_name == "") delete $scope.query.first_name;
-        if ($scope.query.last_name == "") delete $scope.query.last_name;
-        if ($scope.query.email == "") delete $scope.query.email;
-        if ($scope.query.city == "") delete $scope.query.city;
-        if ($scope.query.phone == "") delete $scope.query.phone;
+        for (var key in $scope.query)
+        {
+            if ($scope.query.hasOwnProperty(key))
+            {
+              if ($scope.query[key] == "") delete $scope.query[key];
+            }
+        }
         var filters = $scope.query;
         filters = JSON.stringify(filters);
         //console.log(filters);
