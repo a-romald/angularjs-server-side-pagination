@@ -21,7 +21,16 @@ if ($query == []) $query = null;
 if (!empty($query)) {
 	$q = "WHERE ";
 	foreach ($query as $k => $v) {
-		$q .= $k ." LIKE '%". $v . "%' AND ";
+		switch ($k) {
+			case 'id' : 
+				$q .= $k ."='". $v . "' AND ";
+				break;
+			case 'zip' : 
+				$q .= $k ."='". $v . "' AND ";
+				break;
+			default :
+				$q .= $k ." LIKE '%". $v . "%' AND ";
+		}	
 	}
 	$q = substr($q, 0, -5);
 } else $q = 'q';
